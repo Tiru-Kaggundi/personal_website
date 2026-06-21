@@ -5,12 +5,12 @@ description: "Why I'm sharing more of my work and writing openly."
 tags: ["writing", "projects"]
 ---
 
-I've decided to maintain a small corner of the internet where I can collect my work, experiments, and writing in one place. It's an ongoing effort. I started with google blogger long ago, after rediffblogs broke, then had my own website which someone squatted upon when I was negligent to not renew the domain name. Then I got lazy/busy and continued on blogger. And then substack happened and I partially migrated there. 
+I have chosen to keep a modest corner of the internet where I can gather my work, experiments, and writing in one place. It is a deliberate, if gradual, effort. My experiments with online writing began long ago with Google Blogger, after Rediffblogs shut down. For a while I maintained my own site, until I let the domain lapse and it was claimed by someone else. Life and work intervened, and I continued on Blogger. When Substack came along, I moved part of my writing there.
 
-For years most of my side projects and research lived in private repos and local folders. Moving some of it into public view (even slowly) has already helped me think more clearly. Someday I will perish and my laptop will get sold/reformatted after me. I hope some stubs here will keep floating in the every expanding internet ether, increasing filled by AI slop. 
+For years, most of my side projects and research remained in private repositories or on local drives. Exposing even a portion of it publicly has already helped clarify my thinking. One day this laptop will be wiped clean or sold on. I would like to believe that a few of these notes might survive a little longer in the expanding digital commons, even as it fills up with AI-generated content.
 
-This site is intentionally simple. Blog posts are just Markdown files. Projects are curated by hand. The resume is a PDF I update when needed/feel like. I have a day job and that remains my number one priority. Visitors are therefore requested to kindly indulge me. 
+This site is kept deliberately simple. The blog posts are plain Markdown files. Projects are selected by hand. The resume is a PDF that gets updated when I get around to it. I have a day job that remains my primary responsibility, and I ask for your understanding on that front.
 
-If you're reading this, thank you. I hope something here is useful or interesting to you.
+If you are reading this, thank you. I hope something here proves useful or interesting.
 
-Feel free to send a line on my email/phone. Details in the resume. 
+You can reach me through the contact details in the resume.
