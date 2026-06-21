@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout title="Projects — Tirumala Kaggundi">
+  <main class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+    <h1 class="text-4xl font-semibold tracking-tight">Projects</h1>
+    <p class="mt-2 text-slate-600 max-w-xl">Selected coding and research projects. Most are open where possible.</p>
+
+    <div class="mt-10 space-y-8">
+      {projects.map((project) => (
+        <div class="border-b border-slate-200 pb-8 last:border-b-0">
+          <h2 class="text-2xl font-semibold tracking-tight">{project.title}</h2>
+          <p class="mt-3 text-slate-700 leading-relaxed">{project.description}</p>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            {project.tech.map((tech) => (
+              <span class="text-xs px-2.5 py-1 bg-slate-100 rounded-full text-slate-600">{tech}</span>
+            ))}
+          </div>
+
+          <div class="mt-4 flex gap-4 text-sm">
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" class="font-medium text-slate-900 hover:underline">GitHub →</a>
+            )}
+            {project.blogSlug && (
+              <a href={`/blog/${project.blogSlug}`} class="font-medium text-slate-900 hover:underline">Related writing →</a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 text-sm text-slate-500">More projects live in private repos or are works in progress. Reach out if you'd like to discuss any of them.</p>
+  </main>
+</BaseLayout>

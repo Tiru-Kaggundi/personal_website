@@ -1,17 +1,123 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Tirumala Kaggundi" description="Policy, international trade, research, and code.">
+  <main class="max-w-3xl mx-auto px-6">
+    <!-- Hero -->
+    <section class="pt-10 pb-8">
+      <div class="flex flex-col md:flex-row-reverse items-center md:items-start gap-8 md:gap-10">
+        <!-- Headshot -->
+        <div class="flex-shrink-0">
+          <img 
+            src="/images/headshot.jpg" 
+            alt="Tirumala V Kaggundi" 
+            class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-3xl shadow-xl ring-1 ring-slate-100"
+            width="192"
+            height="192"
+          />
+        </div>
+
+        <!-- Text content -->
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="text-5xl font-semibold tracking-tighter">Tirumala Kaggundi</h1>
+          <p class="mt-3 text-xl text-slate-600">Policy, research &amp; code.</p>
+          <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-prose mx-auto md:mx-0">
+            I am a civil servant (Indian Trade Service - 2009) with the Government of India, where I specialize in international trade policy. I work on AI and data science projects in my free time, and write about them on this site and on Substack at indianwesterlies.substack.com. 
+            I am based out of New Delhi and share my home with my spouse and two teenaged daughters. 
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3 justify-center md:justify-start">
+            <a href="/resume" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-slate-900 text-white text-sm font-medium hover:bg-black transition">
+              Download Resume
+            </a>
+            <a href="/blog" class="inline-flex items-center px-5 py-2.5 rounded-lg border border-slate-300 text-sm font-medium hover:bg-slate-50 transition">
+              Read Writing
+            </a>
+            <a href="https://indianwesterlies.substack.com" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900">
+              Substack →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="py-8 border-t border-slate-200">
+      <h2 class="font-semibold text-sm tracking-widest text-slate-500 mb-3">ABOUT</h2>
+      <div class="prose text-[15px] text-slate-700 max-w-2xl">
+        <p>
+          I have spent over a decade and a half in the Indian Trade Service working on trade policy, export promotion, and economic diplomacy. Prior to joining the government, I worked with the private sector - across Wipro, Infosys, Eaton, Goodrich and Airbus specializing in hydraulics, modeling and simulation for flight system hydraulics, and engineering product development. 
+          Since my Masters in Computational Analysis and Public policy at the University of Chicago in 2022, I have taken a liking to independent research in quantitative analysis, data science, and writing for public audiences, while building small projects in Python and JavaScript to test interesting concepts. One such effort won me a second place in the global "AI for trade" competition in 2025/26. 
+        </p>
+        <p>
+          This site is a simple home for my work — selected projects, writing, and a current resume. Thank you for visiting! 
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="py-8 border-t border-slate-200">
+      <div class="flex items-baseline justify-between mb-4">
+        <h2 class="font-semibold text-sm tracking-widest text-slate-500">FEATURED PROJECTS</h2>
+        <a href="/projects" class="text-sm text-slate-500 hover:text-slate-700">All projects →</a>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {projects.slice(0, 4).map((project) => (
+          <div class="border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition">
+            <h3 class="font-semibold text-lg tracking-tight">{project.title}</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-3">{project.description}</p>
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              {project.tech.map((t) => (
+                <span class="text-xs bg-slate-100 px-2 py-0.5 rounded">{t}</span>
+              ))}
+            </div>
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" class="mt-4 inline-block text-sm font-medium text-slate-900 hover:underline">
+                View on GitHub →
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section class="py-8 border-t border-slate-200">
+      <div class="flex items-baseline justify-between mb-4">
+        <h2 class="font-semibold text-sm tracking-widest text-slate-500">WRITING</h2>
+        <a href="/writings" class="text-sm text-slate-500 hover:text-slate-700">All writings →</a>
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <a href="/blog" class="block group">
+            <div class="text-sm text-slate-500">Latest on the blog</div>
+            <div class="mt-1 text-lg group-hover:underline">Welcome to My Site &amp; On Building in Public</div>
+          </a>
+        </div>
+
+        <div>
+          <a href="https://indianwesterlies.substack.com" class="block text-sm font-medium text-slate-700 hover:text-slate-900">
+            Also on Substack →
+          </a>
+          <div class="text-xs text-slate-500 mt-1">Longer-form essays and notes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume CTA -->
+    <section class="py-10 border-t border-slate-200">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+        <div>
+          <h2 class="font-semibold tracking-tight text-xl">Resume</h2>
+          <p class="text-slate-600 text-sm mt-1">Indian Trade Service (2009) • Policy &amp; Research</p>
+        </div>
+        <a href="/resume" class="inline-flex w-fit px-5 py-2 rounded-lg border border-slate-300 text-sm font-medium hover:bg-slate-50">
+          View &amp; Download PDF
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

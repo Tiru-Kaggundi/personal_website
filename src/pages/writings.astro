@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { writings } from '../data/writings';
+---
+
+<BaseLayout title="Writings — Tirumala Kaggundi" description="Selected publications on trade, economics, and public policy.">
+  <main class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+    <h1 class="text-4xl font-semibold tracking-tight">Writings</h1>
+    <p class="mt-2 text-slate-600 max-w-xl">
+      Selected articles and columns on trade, economics, development, and Indian public policy published in Swarajya, The Hindu Business Line, and elsewhere. 
+      I also write regularly at <a href="https://indianwesterlies.substack.com" class="text-slate-900 hover:underline">Indian Westerlies</a> on Substack.
+    </p>
+
+    <div class="mt-10 space-y-8">
+      {writings.map((writing) => (
+        <div class="border-b border-slate-200 pb-8 last:border-b-0">
+          <a href={writing.url || '#'} target={writing.url ? "_blank" : undefined} class="group">
+            <h2 class="text-xl font-semibold tracking-tight leading-snug group-hover:underline">{writing.title}</h2>
+          </a>
+          <div class="mt-1 text-sm text-slate-500">
+            {writing.publication} · {writing.date}
+          </div>
+          {writing.url && (
+            <a href={writing.url} target="_blank" class="mt-2 inline-block text-sm font-medium text-slate-900 hover:underline">
+              Read article →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-sm text-slate-500">
+      For more frequent writing, visit my <a href="https://indianwesterlies.substack.com" class="text-slate-700 hover:underline">Substack</a>.
+    </div>
+  </main>
+</BaseLayout>

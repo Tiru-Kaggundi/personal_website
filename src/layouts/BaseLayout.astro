@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Tirumala Kaggundi — policy, research, and code." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white text-slate-900 antialiased">
+    <nav class="border-b border-slate-200">
+      <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="/" class="font-semibold tracking-tight text-xl">Tiru Kaggundi</a>
+        <div class="flex gap-6 text-sm">
+          <a href="/projects" class="hover:text-slate-600 transition">Projects</a>
+          <a href="/writings" class="hover:text-slate-600 transition">Writings</a>
+          <a href="/blog" class="hover:text-slate-600 transition">Blog</a>
+          <a href="/resume" class="hover:text-slate-600 transition">Resume</a>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="border-t border-slate-200 mt-20">
+      <div class="max-w-3xl mx-auto px-6 py-8 text-sm text-slate-500 flex flex-col sm:flex-row gap-2 sm:items-center justify-between">
+        <div>© {new Date().getFullYear()} Tirumala Kaggundi</div>
+        <div class="flex gap-4">
+          <a href="https://github.com/Tiru-Kaggundi" target="_blank" class="hover:text-slate-700">GitHub</a>
+          <a href="https://indianwesterlies.substack.com" class="hover:text-slate-700">Substack</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

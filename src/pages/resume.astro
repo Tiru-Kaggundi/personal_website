@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Resume — Tirumala Kaggundi">
+  <main class="max-w-2xl mx-auto px-6 pt-12 pb-20">
+    <h1 class="text-4xl font-semibold tracking-tight">Resume</h1>
+
+    <div class="mt-8 p-8 border border-slate-200 rounded-2xl bg-slate-50">
+      <div class="prose">
+        <p><strong>Tirumala Venkatesh Kaggundi</strong></p>
+        <p>Indian Trade Service (2009 batch)</p>
+        <p class="mt-4">Policy research • International trade • Data analysis • Blogs and writeups</p>
+      </div>
+
+      <a 
+        href="/resume.pdf" 
+        download
+        class="mt-8 inline-flex items-center bg-slate-900 hover:bg-black text-white px-6 py-3 rounded-lg text-sm font-medium transition"
+      >
+        Download PDF Resume
+      </a>
+
+      <p class="mt-4 text-xs text-slate-500">Last updated: June 2026 (placeholder — replace with your latest version)</p>
+    </div>
+
+    <div class="mt-10 text-sm text-slate-600">
+      <p>Highlights from my experience include work on trade policy, export promotion, and independent research and writing.</p>
+      <p class="mt-2">For the most current version, please download the PDF above or reach out directly.</p>
+    </div>
+  </main>
+</BaseLayout>
