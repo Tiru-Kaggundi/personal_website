@@ -1,11 +1,11 @@
-export interface Writing {
+export interface Publication {
   title: string;
   publication: string;
   date: string;
   url?: string;
 }
 
-export const writings: Writing[] = [
+export const publications: Publication[] = [
   {
     title: "Chinese Imports Into India: Analysing Strategic Measures To Enhance Self-Reliance",
     publication: "Swarajya Magazine",

@@ -5,7 +5,7 @@ Personal website for Tirumala Kaggundi.
 A clean, fast, static site built with [Astro](https://astro.build) + Tailwind that includes:
 - Landing page
 - Projects
-- Writings (external publications)
+- Publications (external publications)
 - Blog
 - Resume
 
@@ -42,8 +42,8 @@ Your post content here. Markdown supported.
 ### Updating Projects
 Edit `src/data/projects.ts`. The first project is the AI for Trade competition entry.
 
-### Updating Writings
-Edit `src/data/writings.ts` (add URLs if you want direct links to the articles).
+### Updating Publications
+Edit `src/data/publications.ts` (add URLs if you want direct links to the articles).
 
 ### Updating Resume
 Replace `public/resume.pdf` with your latest version.
@@ -100,14 +100,14 @@ src/
 │   └── blog/                 # Markdown blog posts (Astro Content Collections)
 ├── data/
 │   ├── projects.ts           # Projects list
-│   └── writings.ts           # External publications
+│   └── publications.ts           # External publications
 ├── layouts/
 │   ├── BaseLayout.astro
 │   └── BlogPostLayout.astro
 ├── pages/
 │   ├── index.astro           # Homepage
 │   ├── projects.astro
-│   ├── writings.astro
+│   ├── publications.astro
 │   ├── blog/
 │   │   ├── index.astro
 │   │   └── [slug].astro
@@ -122,7 +122,7 @@ public/
 
 ## Notes
 
-- The site is fully static. All content (blog posts, projects, writings, resume) lives in this repository.
+- The site is fully static. All content (blog posts, projects, publications, resume) lives in this repository.
 - Vercel only builds and serves the output — nothing is stored on Vercel.
 - The domain `www.tirumalakaggundi.com` is managed on Squarespace. DNS points to Vercel.
 
