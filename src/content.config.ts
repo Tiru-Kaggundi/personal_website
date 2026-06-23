@@ -7,7 +7,12 @@ const blog = defineCollection({
     title: z.string(),
     pubDate: z.date(),
     description: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z
+      .array(z.union([z.string(), z.object({ tag: z.string() })]))
+      .optional()
+      .transform((tags) =>
+        tags?.map((t) => (typeof t === "string" ? t : t.tag))
+      ),
   }),
 });
 
