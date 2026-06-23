@@ -200,7 +200,7 @@ export default {
 
     if (path === '/auth') {
       const redirectUri = `${url.origin}/callback`;
-      const githubUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=repo&response_type=code`;
+      const githubUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=repo`;
       return Response.redirect(githubUrl, 302);
     }
 
@@ -220,13 +220,39 @@ export default {
 
       const tokenData = await tokenRes.json();
 
-      const html = `<!DOCTYPE html><html><body><script>
-        window.opener.postMessage({
-          type: 'authorization:github:success',
-          data: ${JSON.stringify(tokenData)}
-        }, '*');
+      const accessToken = tokenData.access_token;
+
+      const message = 'authorization:github:success:' + JSON.stringify({
+        token: accessToken,
+        provider: 'github'
+      });
+
+      const html = `<!DOCTYPE html>
+<html>
+<head><title>Authenticating...</title></head>
+<body>
+  <h1>GitHub authorized</h1>
+  <p>If this was opened by Decap it will close and log you in.</p>
+  <button onclick="send()">Send manually</button>
+  <script>
+    const msg = ${JSON.stringify(message)};
+    function send() {
+      if (window.opener) {
+        window.opener.postMessage("authorizing:github", "*");
+        window.opener.postMessage(msg, "*");
         window.close();
-      </script></body></html>`;
+      }
+    }
+    setTimeout(() => {
+      if (window.opener) {
+        window.opener.postMessage("authorizing:github", "*");
+        window.opener.postMessage(msg, "*");
+        window.close();
+      }
+    }, 150);
+  </script>
+</body>
+</html>`;
 
       return new Response(html, { headers: { 'Content-Type': 'text/html' } });
     }
@@ -245,7 +271,7 @@ export default {
 6. Edit your OAuth App on GitHub and update the **Authorization callback URL** to:
    `https://tirumala-cms-oauth.yourname.workers.dev/callback`
 
-7. Update `public/admin/config.yml` and add these two lines under the `backend:` section:
+7. Update `public/admin/config.yml` and make sure the backend section looks like this:
 
 ```yaml
 backend:
@@ -253,6 +279,7 @@ backend:
   repo: Tiru-Kaggundi/personal_website
   branch: main
   base_url: https://tirumala-cms-oauth.yourname.workers.dev   # ← your worker URL
+  auth_endpoint: /auth
 ```
 
 8. Commit & push the updated `config.yml`. Vercel will redeploy.
