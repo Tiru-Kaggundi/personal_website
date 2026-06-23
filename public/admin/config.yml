@@ -3,7 +3,7 @@ backend:
   repo: Tiru-Kaggundi/personal_website
   branch: main
   base_url: https://tiruwebsite-cms-oauth.tiru-ebd.workers.dev
-  site_domain: www.tirumalakaggundi.com
+  auth_endpoint: /auth
 
 media_folder: "public/images"
 public_folder: "/images"
