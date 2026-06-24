@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { projects } from '../data/projects';
+import { getCollection } from 'astro:content';
+
+const latestPost = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 ---
 
 <BaseLayout title="Tirumala Kaggundi" description="Policy, international trade, research, and code.">
@@ -31,11 +35,8 @@ import { projects } from '../data/projects';
             <a href="/resume" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-slate-900 text-white text-sm font-medium hover:bg-black transition">
               Download Resume
             </a>
-            <a href="/blog" class="inline-flex items-center px-5 py-2.5 rounded-lg border border-slate-300 text-sm font-medium hover:bg-slate-50 transition">
-              Read Writing
-            </a>
-            <a href="https://indianwesterlies.substack.com" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900">
-              Substack →
+            <a href="https://indianwesterlies.substack.com" class="inline-flex items-center px-5 py-2.5 rounded-lg border border-slate-300 text-sm font-medium hover:bg-slate-50 transition">
+              Read on Substack
             </a>
           </div>
 
@@ -106,9 +107,9 @@ import { projects } from '../data/projects';
 
       <div class="space-y-6">
         <div>
-          <a href="/blog" class="block group">
+          <a href={`/blog/${latestPost.id}`} class="block group">
             <div class="text-sm text-slate-500">Latest on the blog</div>
-            <div class="mt-1 text-lg group-hover:underline">Welcome to My Site &amp; On Building in Public</div>
+            <div class="mt-1 text-lg group-hover:underline">{latestPost.data.title}</div>
           </a>
         </div>
 
